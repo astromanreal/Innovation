@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 210 20% 98%; /* Slightly off-white for a softer look */
+    --foreground: 240 10% 3.9%; /* Very dark gray for text */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%; /* A vibrant blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 210 40% 96.1%; /* Light gray */
+    --secondary-foreground: 222 47% 11.2%; /* Dark blue */
+    --muted: 210 40% 90%; /* Muted gray */
+    --muted-foreground: 215 20% 45.1%; /* Muted text */
+    --accent: 262 84% 58%; /* A strong purple for accent */
+    --accent-foreground: 0 0% 100%; /* White */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 30% 87%; /* Slightly softer border */
+    --input: 210 30% 87%;
+    --ring: 221 83% 53%; /* Vibrant blue for focus rings */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem; /* Default radius */
+
+    /* Sidebar specific colors */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%; /* Very dark background */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 240 5% 11%; /* Dark card */
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217 91% 60.2%; /* Brighter blue for dark mode */
+    --primary-foreground: 222 47% 11.2%; /* Dark blue */
+    --secondary: 240 3.7% 15.9%; /* Dark gray */
+    --secondary-foreground: 0 0% 98%; /* Light text */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 215 20% 65.1%; /* Lighter muted text */
+    --accent: 262 75% 68%; /* Brighter purple */
+    --accent-foreground: 0 0% 100%; /* White */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 217 91% 60.2%; /* Brighter blue for focus rings */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar specific colors for dark mode */
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 217 91% 60.2%;
+    --sidebar-primary-foreground: 222 47% 11.2%;
+    --sidebar-accent: 240 5% 11%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 5% 11%;
+    --sidebar-ring: 217 91% 60.2%;
+  }
+
+  /* Custom Preset Themes */
+  .theme-cosmic-blue {
+    --background: 230 50% 10%; /* Deep navy */
+    --foreground: 210 30% 95%; /* Light cyan/white text */
+    --card: 230 45% 15%;
+    --card-foreground: 210 30% 95%;
+    --popover: 230 45% 15%;
+    --popover-foreground: 210 30% 95%;
+    --primary: 190 90% 60%; /* Bright cyan */
+    --primary-foreground: 230 50% 5%; /* Deep navy */
+    --secondary: 230 40% 20%; /* Slightly lighter navy */
+    --secondary-foreground: 190 80% 85%;
+    --muted: 230 30% 25%;
+    --muted-foreground: 210 25% 60%;
+    --accent: 180 85% 55%; /* Teal accent */
+    --accent-foreground: 230 50% 5%;
+    --border: 230 40% 25%;
+    --input: 230 40% 25%;
+    --ring: 190 90% 60%;
+  }
+
+  .theme-eco-green {
+    --background: 100 25% 95%; /* Very light green/beige */
+    --foreground: 120 30% 15%; /* Dark forest green */
+    --card: 100 20% 100%;
+    --card-foreground: 120 30% 15%;
+    --popover: 100 20% 100%;
+    --popover-foreground: 120 30% 15%;
+    --primary: 130 60% 40%; /* Earthy green */
+    --primary-foreground: 90 50% 95%; /* Light beige for text on primary */
+    --secondary: 90 30% 90%; /* Light beige */
+    --secondary-foreground: 130 50% 25%;
+    --muted: 90 25% 85%;
+    --muted-foreground: 120 20% 40%;
+    --accent: 40 70% 60%; /* Warm sand/ochre accent */
+    --accent-foreground: 120 30% 15%;
+    --border: 100 20% 80%;
+    --input: 100 20% 80%;
+    --ring: 130 60% 40%;
+  }
+
+  .theme-solar-flare {
+    --background: 30 10% 15%; /* Charcoal */
+    --foreground: 30 80% 90%; /* Light gold/orange text */
+    --card: 30 8% 20%;
+    --card-foreground: 30 80% 90%;
+    --popover: 30 8% 20%;
+    --popover-foreground: 30 80% 90%;
+    --primary: 45 90% 60%; /* Bright gold */
+    --primary-foreground: 30 10% 10%; /* Very dark */
+    --secondary: 25 15% 25%; /* Darker charcoal */
+    --secondary-foreground: 45 80% 80%;
+    --muted: 20 10% 30%;
+    --muted-foreground: 30 50% 65%;
+    --accent: 0 80% 55%; /* Deep red accent */
+    --accent-foreground: 30 80% 95%;
+    --border: 30 10% 30%;
+    --input: 30 10% 30%;
+    --ring: 45 90% 60%;
+  }
+  
+  .theme-quantum-purple {
+    --background: 270 15% 12%; /* Very dark violet */
+    --foreground: 270 50% 90%; /* Light lavender text */
+    --card: 270 12% 18%;
+    --card-foreground: 270 50% 90%;
+    --popover: 270 12% 18%;
+    --popover-foreground: 270 50% 90%;
+    --primary: 280 80% 65%; /* Bright violet */
+    --primary-foreground: 270 15% 5%; /* Very dark for text on primary */
+    --secondary: 270 10% 25%; /* Dark gray-purple */
+    --secondary-foreground: 280 70% 85%;
+    --muted: 270 8% 30%;
+    --muted-foreground: 270 30% 60%;
+    --accent: 320 90% 70%; /* Pinkish-purple accent */
+    --accent-foreground: 270 15% 5%;
+    --border: 270 10% 30%;
+    --input: 270 10% 30%;
+    --ring: 280 80% 65%;
+  }
+
+  .theme-minimalist-white {
+    --background: 0 0% 99%; /* Almost pure white */
+    --foreground: 240 5% 20%; /* Dark gray for text */
+    --card: 0 0% 100%;
+    --card-foreground: 240 5% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5% 20%;
+    --primary: 210 15% 50%; /* Muted gray-blue as primary */
+    --primary-foreground: 0 0% 100%; 
+    --secondary: 0 0% 96%; /* Very light gray */
+    --secondary-foreground: 210 10% 30%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 240 5% 45%;
+    --accent: 210 10% 70%; /* Soft gray accent */
+    --accent-foreground: 240 5% 15%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 210 15% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
