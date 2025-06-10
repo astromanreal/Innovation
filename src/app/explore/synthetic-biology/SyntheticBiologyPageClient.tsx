@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Dna, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Settings2, Cpu, Network, Printer, Laptop, Archive, Users2, GraduationCap, ShieldCheck, ShieldAlert, FileText, MessageSquareWarning, UsersRound, TrendingUp, Zap, Eye, Wand2, Factory, Satellite, HeartPulse, Leaf, Layers, Recycle, DatabaseZap, Planet as PlanetIcon
+  Dna, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Settings2, Cpu, Network, Printer, Laptop, Archive, Users2, GraduationCap, ShieldCheck, ShieldAlert, FileText, MessageSquareWarning, UsersRound, TrendingUp, Zap, Eye, Wand2, Factory, Satellite, HeartPulse, Leaf, Layers, Recycle, DatabaseZap, Planet
 } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -121,7 +121,7 @@ const futureDirectionsData = [
     { title: 'Living Sensors & Smart Materials', description: 'Developing bio-integrated materials and living sensors that can detect environmental changes, self-repair, or produce valuable compounds in real time.', icon: <Eye className="w-7 h-7 text-primary"/> },
     { title: 'Artificial Life & Minimal Cells', description: 'Constructing fully synthetic organisms from the ground up or creating minimal cells with only essential genes to understand fundamental life processes and create custom bioproduction chassis.', icon: <Wand2 className="w-7 h-7 text-primary"/> },
     { title: 'Biofoundries & Automation', description: 'Scaling up biological design and manufacturing through automated robotic labs (biofoundries) and AI-driven experimental design, accelerating the DBTL cycle.', icon: <Factory className="w-7 h-7 text-primary"/> },
-    { title: 'Space Bioengineering', description: 'Engineering microbes and plants to support long-duration space missions, such as producing oxygen, recycling waste, growing food, or creating construction materials on other planets.', icon: <PlanetIcon className="w-7 h-7 text-primary"/> }, 
+    { title: 'Space Bioengineering', description: 'Engineering microbes and plants to support long-duration space missions, such as producing oxygen, recycling waste, growing food, or creating construction materials on other planets.', icon: <Planet className="w-7 h-7 text-primary"/> }, 
 ];
 
 const exploreFurtherData = [

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   Handshake, Milestone, Lightbulb, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Cpu, Users2, Rocket,
-  MicVocal, MousePointerSquare as TactileIcon, BrainCircuit, Gamepad2, HeartPulse, Laptop, MonitorSmartphone, Wand2, Share2, LockKeyhole, Accessibility, UsersRound, MessageSquareWarning,
+  MicVocal, MousePointerSquare, BrainCircuit, Gamepad2, HeartPulse, Laptop, MonitorSmartphone, Wand2, Share2, LockKeyhole, Accessibility, UsersRound, MessageSquareWarning,
   FlaskConical, Briefcase, TrendingUp, MapPin, GraduationCap
 } from 'lucide-react';
 import { Section } from '@/components/Section';
@@ -77,7 +77,7 @@ const presentApplicationsData = [
   },
   {
     title: 'Immersive Entertainment',
-    icon: <MonitorSmartphone className="w-7 h-7 text-primary" />, // Changed from VrHeadset
+    icon: <MonitorSmartphone className="w-7 h-7 text-primary" />, 
     description: 'VR/AR systems using full-body tracking, eye-tracking, and tactile gloves for realistic gaming and entertainment. Interactive museum exhibits and public installations using gesture and touch.',
     imageHint: "vr gaming experience"
   }
@@ -88,7 +88,7 @@ const keyPlayersData = {
     { name: 'NeuroSync Labs (Conceptual)', focus: 'Pioneering consumer-grade brain-computer interface devices and software platforms for wellness and assistive tech.', icon: <BrainCircuit className="w-5 h-5 text-primary"/> },
     { name: 'Microsoft', focus: 'HoloLens (Mixed Reality), Windows Ink, Surface Dial, accessibility features.', icon: <Laptop className="w-5 h-5 text-primary"/> },
     { name: 'Google', focus: 'Voice AI (Google Assistant), Android OS interactions, Material Design.', icon: <MicVocal className="w-5 h-5 text-primary"/> },
-    { name: 'Meta', focus: 'Quest VR headsets, AR research, haptic feedback technologies (Reality Labs).', icon: <MonitorSmartphone className="w-5 h-5 text-primary"/> }, // Changed from VrHeadset
+    { name: 'Meta', focus: 'Quest VR headsets, AR research, haptic feedback technologies (Reality Labs).', icon: <MonitorSmartphone className="w-5 h-5 text-primary"/> }, 
   ],
   researchInstitutions: [
     { name: 'Center for Advanced Interaction Research (Conceptual)', focus: 'Multidisciplinary research on next-gen interfaces combining AI, neuroscience, design ethics, and cognitive psychology.', icon: <FlaskConical className="w-5 h-5 text-primary"/> },
@@ -103,7 +103,7 @@ const keyPlayersData = {
 const futureTrendsData = [
     { title: 'High-Bandwidth BCIs', description: 'Fully non-invasive, high-bandwidth Brain-Computer Interfaces enabling seamless mind-to-machine communication for control and creative expression.', icon: <BrainCircuit className="w-7 h-7 text-primary"/> },
     { title: 'AI-Driven Predictive Interfaces', description: 'AI systems that learn user patterns and adapt interfaces in real-time to anticipate needs, streamline tasks, and reduce cognitive load.', icon: <Wand2 className="w-7 h-7 text-primary"/> },
-    { title: 'Advanced Haptics', description: 'Sophisticated tactile feedback systems capable of simulating a wide range of textures, temperatures, and forces for deeply immersive and informative experiences.', icon: <TactileIcon className="w-7 h-7 text-primary"/> },
+    { title: 'Advanced Haptics', description: 'Sophisticated tactile feedback systems capable of simulating a wide range of textures, temperatures, and forces for deeply immersive and informative experiences.', icon: <MousePointerSquare className="w-7 h-7 text-primary"/> },
     { title: 'Context-Aware Ambient Computing', description: 'Seamless integration of HCI into environments where technology fades into the background, responding intelligently to user presence and implicit cues.', icon: <MapPin className="w-7 h-7 text-primary"/>},
 ];
 
@@ -159,7 +159,7 @@ export default function HumanComputerInteractionPageClient() {
                         <li><BrainCircuit className="inline w-4 h-4 mr-1 text-accent"/>Brain-Computer Interfaces (BCI): Direct neural communication.</li>
                         <li><Handshake className="inline w-4 h-4 mr-1 text-accent"/>Gesture Recognition: Interpreting human motions via sensors.</li>
                         <li><MicVocal className="inline w-4 h-4 mr-1 text-accent"/>Voice AI: Natural language processing for commands and conversation.</li>
-                        <li><TactileIcon className="inline w-4 h-4 mr-1 text-accent"/>Tactile/Haptic Feedback: Simulating touch for immersion.</li>
+                        <li><MousePointerSquare className="inline w-4 h-4 mr-1 text-accent"/>Tactile/Haptic Feedback: Simulating touch for immersion.</li>
                     </ul>
                 </div>
                 <p className="text-base text-muted-foreground">
