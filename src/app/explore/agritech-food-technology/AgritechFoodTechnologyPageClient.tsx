@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Leaf, Tractor, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Cpu, Users2, TrendingUp, Settings2, Network, ShieldCheck, Zap, MapPin, DatabaseZap, Wifi, Smartphone, FileText, MessageSquareWarning, UsersRound, BarChart3, Dna, Factory, Drone, DollarSign, Wrench, Gavel, Recycle, Sprout, Beaker, PackageSearch, Bot, Wheat, GraduationCap
+  Leaf, Tractor, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Cpu, Users2, TrendingUp, Settings2, Network, ShieldCheck, Zap, MapPin, DatabaseZap, Wifi, Smartphone, FileText, MessageSquareWarning, UsersRound, BarChart3, Dna, Factory, Drone, DollarSign, Wrench, Gavel, Recycle, Sprout, Beaker, PackageSearch, Bot, Wheat, GraduationCap, HelpCircle
 } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,6 +17,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useToast } from '@/hooks/use-toast'; 
+import { useState, useEffect } from 'react'; // Added for mounted state
 
 const historicalTimelineData = [
   {
@@ -82,9 +83,10 @@ const presentApplicationsData = [
   }
 ];
 
-const coreTechnologiesData = [
+// Core Technologies Data will be generated dynamically based on mounted state
+const getCoreTechnologiesData = (mounted: boolean) => [
   { title: 'IoT & Sensor Networks', description: 'Real-time data collection on soil moisture, nutrient levels, weather, pest presence, and livestock health, enabling data-driven decisions.', icon: <Wifi className="w-6 h-6 text-accent"/>},
-  { title: 'Drones & Robotics', description: 'Automated tasks like crop monitoring (imaging, NDVI), precision spraying, planting, harvesting, and robotic milking or feeding in livestock farming.', icon: <Drone className="w-6 h-6 text-accent"/>},
+  { title: 'Drones & Robotics', description: 'Automated tasks like crop monitoring (imaging, NDVI), precision spraying, planting, harvesting, and robotic milking or feeding in livestock farming.', icon: mounted ? <Drone className="w-6 h-6 text-accent"/> : <HelpCircle className="w-6 h-6 text-accent"/>},
   { title: 'Genetic Engineering & CRISPR', description: 'Developing crops with enhanced traits like drought tolerance, disease resistance, improved nutritional value, and longer shelf life using precise gene editing tools.', icon: <Dna className="w-6 h-6 text-accent"/>},
   { title: 'Cellular Agriculture & Bioprocessing', description: 'Techniques for culturing animal cells to produce meat, seafood, and dairy products without traditional farming. Bioreactors and fermentation for producing alternative proteins and food ingredients.', icon: <Factory className="w-6 h-6 text-accent"/>},
   { title: 'Blockchain & AI Platforms', description: 'Secure and transparent data sharing across the food supply chain. AI algorithms for optimizing farm management, predicting market demands, and improving food quality control.', icon: <Network className="w-6 h-6 text-accent"/>},
@@ -145,6 +147,13 @@ const exploreFurtherData = [
 
 export default function AgritechFoodTechnologyPageClient() {
   const { toast } = useToast();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const coreTechnologiesData = getCoreTechnologiesData(mounted);
 
   const handleResourceClick = (url: string, name: string) => {
     if (url === "#") {

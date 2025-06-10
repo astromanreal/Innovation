@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
   Handshake, Milestone, Lightbulb, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Cpu, Users2, Rocket,
   MicVocal, MousePointerSquare, BrainCircuit, Gamepad2, HeartPulse, Laptop, MonitorSmartphone, Wand2, Share2, LockKeyhole, Accessibility, UsersRound, MessageSquareWarning,
-  FlaskConical, Briefcase, TrendingUp, MapPin, GraduationCap
+  FlaskConical, Briefcase, TrendingUp, MapPin, GraduationCap, HelpCircle, Move
 } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState, useEffect } from 'react'; // Added for mounted state
 
 const historicalTimelineData = [
   {
@@ -100,12 +101,14 @@ const keyPlayersData = {
   ],
 };
 
-const futureTrendsData = [
+// Future Trends Data will be generated dynamically based on mounted state
+const getFutureTrendsData = (mounted: boolean) => [
     { title: 'High-Bandwidth BCIs', description: 'Fully non-invasive, high-bandwidth Brain-Computer Interfaces enabling seamless mind-to-machine communication for control and creative expression.', icon: <BrainCircuit className="w-7 h-7 text-primary"/> },
     { title: 'AI-Driven Predictive Interfaces', description: 'AI systems that learn user patterns and adapt interfaces in real-time to anticipate needs, streamline tasks, and reduce cognitive load.', icon: <Wand2 className="w-7 h-7 text-primary"/> },
-    { title: 'Advanced Haptics', description: 'Sophisticated tactile feedback systems capable of simulating a wide range of textures, temperatures, and forces for deeply immersive and informative experiences.', icon: <MousePointerSquare className="w-7 h-7 text-primary"/> },
+    { title: 'Advanced Haptics', description: 'Sophisticated tactile feedback systems capable of simulating a wide range of textures, temperatures, and forces for deeply immersive and informative experiences.', icon: mounted ? <MousePointerSquare className="w-7 h-7 text-primary"/> : <HelpCircle className="w-7 h-7 text-primary" /> },
     { title: 'Context-Aware Ambient Computing', description: 'Seamless integration of HCI into environments where technology fades into the background, responding intelligently to user presence and implicit cues.', icon: <MapPin className="w-7 h-7 text-primary"/>},
 ];
+
 
 const ethicalSocietalData = [
   { title: 'Neural Data Privacy & Security', description: 'Protecting highly sensitive neural data collected by BCIs from unauthorized access, misuse, and ensuring robust security protocols.', icon: <LockKeyhole className="w-5 h-5 text-destructive" /> },
@@ -123,6 +126,14 @@ const exploreFurtherData = [
 
 
 export default function HumanComputerInteractionPageClient() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const futureTrendsData = getFutureTrendsData(mounted);
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-16">
       <header className="mb-8">
@@ -156,10 +167,10 @@ export default function HumanComputerInteractionPageClient() {
                  <div>
                     <h4 className="font-semibold text-md text-primary mb-1">Core Focus Areas:</h4>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                        <li><BrainCircuit className="inline w-4 h-4 mr-1 text-accent"/>Brain-Computer Interfaces (BCI): Direct neural communication.</li>
+                        <li>{mounted ? <BrainCircuit className="inline w-4 h-4 mr-1 text-accent"/> : <HelpCircle className="inline w-4 h-4 mr-1 text-accent" />}Brain-Computer Interfaces (BCI): Direct neural communication.</li>
                         <li><Handshake className="inline w-4 h-4 mr-1 text-accent"/>Gesture Recognition: Interpreting human motions via sensors.</li>
                         <li><MicVocal className="inline w-4 h-4 mr-1 text-accent"/>Voice AI: Natural language processing for commands and conversation.</li>
-                        <li><MousePointerSquare className="inline w-4 h-4 mr-1 text-accent"/>Tactile/Haptic Feedback: Simulating touch for immersion.</li>
+                        <li>{mounted ? <MousePointerSquare className="inline w-4 h-4 mr-1 text-accent"/> : <HelpCircle className="inline w-4 h-4 mr-1 text-accent" />}Tactile/Haptic Feedback: Simulating touch for immersion.</li>
                     </ul>
                 </div>
                 <p className="text-base text-muted-foreground">

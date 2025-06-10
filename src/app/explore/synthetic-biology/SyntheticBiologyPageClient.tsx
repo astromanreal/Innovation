@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Dna, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Settings2, Cpu, Network, Printer, Laptop, Archive, Users2, GraduationCap, ShieldCheck, ShieldAlert, FileText, MessageSquareWarning, UsersRound, TrendingUp, Zap, Eye, Wand2, Factory, Satellite, HeartPulse, Leaf, Layers, Recycle, DatabaseZap, Planet
+  Dna, Milestone, Lightbulb, FlaskConical, Rocket, Brain, Users, Building, Globe, Puzzle, Scale, BookOpen, ArrowLeft, ExternalLink, Info as InfoIcon, CheckCircle, Settings2, Cpu, Network, Printer, Laptop, Archive, Users2, GraduationCap, ShieldCheck, ShieldAlert, FileText, MessageSquareWarning, UsersRound, TrendingUp, Zap, Eye, Wand2, Factory, Satellite, HeartPulse, Leaf, Layers, Recycle, DatabaseZap, Planet, HelpCircle, Orbit
 } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,6 +17,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useToast } from '@/hooks/use-toast'; 
+import { useState, useEffect } from 'react'; // Added for mounted state
 
 const historicalTimelineData = [
   {
@@ -116,12 +117,13 @@ const challengesEthicsData = [
   { title: 'Public Perception & Engagement', description: 'Building public trust through transparency, education, and inclusive dialogue about the benefits and risks of synthetic biology.', icon: <UsersRound className="w-5 h-5 text-destructive" /> },
 ];
 
-const futureDirectionsData = [
+// Future Directions Data will be generated dynamically based on mounted state
+const getFutureDirectionsData = (mounted: boolean) => [
     { title: 'Programmable Cells as Therapies', description: 'Engineering custom immune cells (e.g., CAR-T cells) and designing genetic circuits for personalized medicine, targeting diseases like cancer and autoimmune disorders.', icon: <Zap className="w-7 h-7 text-primary"/> },
     { title: 'Living Sensors & Smart Materials', description: 'Developing bio-integrated materials and living sensors that can detect environmental changes, self-repair, or produce valuable compounds in real time.', icon: <Eye className="w-7 h-7 text-primary"/> },
     { title: 'Artificial Life & Minimal Cells', description: 'Constructing fully synthetic organisms from the ground up or creating minimal cells with only essential genes to understand fundamental life processes and create custom bioproduction chassis.', icon: <Wand2 className="w-7 h-7 text-primary"/> },
     { title: 'Biofoundries & Automation', description: 'Scaling up biological design and manufacturing through automated robotic labs (biofoundries) and AI-driven experimental design, accelerating the DBTL cycle.', icon: <Factory className="w-7 h-7 text-primary"/> },
-    { title: 'Space Bioengineering', description: 'Engineering microbes and plants to support long-duration space missions, such as producing oxygen, recycling waste, growing food, or creating construction materials on other planets.', icon: <Planet className="w-7 h-7 text-primary"/> }, 
+    { title: 'Space Bioengineering', description: 'Engineering microbes and plants to support long-duration space missions, such as producing oxygen, recycling waste, growing food, or creating construction materials on other planets.', icon: mounted ? <Planet className="w-7 h-7 text-primary"/> : <Orbit className="w-7 h-7 text-primary"/> }, 
 ];
 
 const exploreFurtherData = [
@@ -149,6 +151,13 @@ const exploreFurtherData = [
 
 export default function SyntheticBiologyPageClient() {
   const { toast } = useToast();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const futureDirectionsData = getFutureDirectionsData(mounted);
 
   const handleResourceClick = (url: string, name: string) => {
     if (url === "#") {
